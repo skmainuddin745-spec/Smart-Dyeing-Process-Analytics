@@ -1,0 +1,26 @@
+# ============================================================
+# Smart Dyeing Process Analytics — .gitignore
+# ============================================================
+
+# Proprietary industrial batch data — NEVER commit
+*.csv
+*.xlsx
+*.xls
+Parsed_680_Batches_Raw.csv
+Reactive_236_4SOURCE_VERIFIED.xlsx
+
+# Generated figures (reproducible from source)
+charts/
+*.png
+*.svg
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db

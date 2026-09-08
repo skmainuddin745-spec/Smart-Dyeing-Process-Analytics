@@ -1,0 +1,180 @@
+﻿{
+  "session_date": "2026-08",
+  "analyst": "Researcher",
+  "supervisor": "Research Supervisor",
+  "source_file": "industrial_batch_dataset.csv",
+  "claims_verified": [
+    {
+      "claim": "Total unique batches",
+      "computed_value": "660",
+      "formula": "len(df['Batch_No'].unique())",
+      "source": "industrial_batch_dataset.csv"
+    },
+    {
+      "claim": "Shade count: LIGHT",
+      "computed_value": "381",
+      "formula": "df.drop_duplicates('Batch_No')['Shade'].value_counts()['LIGHT']",
+      "source": "CSV"
+    },
+    {
+      "claim": "Shade count: MEDIUM",
+      "computed_value": "60",
+      "formula": "df.drop_duplicates('Batch_No')['Shade'].value_counts()['MEDIUM']",
+      "source": "CSV"
+    },
+    {
+      "claim": "Shade count: DARK",
+      "computed_value": "183",
+      "formula": "df.drop_duplicates('Batch_No')['Shade'].value_counts()['DARK']",
+      "source": "CSV"
+    },
+    {
+      "claim": "Shade count: UNKNOWN",
+      "computed_value": "36",
+      "formula": "df.drop_duplicates('Batch_No')['Shade'].value_counts()['UNKNOWN']",
+      "source": "CSV"
+    },
+    {
+      "claim": "Soda Ash LIGHT clean mean",
+      "computed_value": "5.191 g/L",
+      "formula": "Z-Score AND IQR clean",
+      "source": "Model 1"
+    },
+    {
+      "claim": "Salt LIGHT clean mean",
+      "computed_value": "14.038 g/L",
+      "formula": "Z-Score AND IQR clean",
+      "source": "Model 1"
+    },
+    {
+      "claim": "Salt DARK clean mean",
+      "computed_value": "60.659 g/L",
+      "formula": "Z-Score AND IQR clean",
+      "source": "Model 1"
+    },
+    {
+      "claim": "Salt MEDIUM clean mean",
+      "computed_value": "31.552 g/L",
+      "formula": "Z-Score AND IQR clean",
+      "source": "Model 1"
+    },
+    {
+      "claim": "ANOVA F-stat: Salt",
+      "computed_value": "F=647.30, p=4.07e-143",
+      "formula": "scipy.stats.f_oneway(*[[297, 59, 178]])",
+      "source": "Model 2 â€” ANOVA"
+    },
+    {
+      "claim": "ANOVA F-stat: Soda Ash",
+      "computed_value": "F=100.00, p=6.06e-38",
+      "formula": "scipy.stats.f_oneway(*[[334, 59, 179]])",
+      "source": "Model 2 â€” ANOVA"
+    },
+    {
+      "claim": "ANOVA F-stat: Caustic Soda",
+      "computed_value": "F=31.09, p=2.56e-13",
+      "formula": "scipy.stats.f_oneway(*[[243, 36, 145]])",
+      "source": "Model 2 â€” ANOVA"
+    },
+    {
+      "claim": "ANOVA F-stat: H2O2",
+      "computed_value": "F=21.49, p=1.01e-09",
+      "formula": "scipy.stats.f_oneway(*[[372, 58, 144]])",
+      "source": "Model 2 â€” ANOVA"
+    },
+    {
+      "claim": "Salt ANOVA F > 400 (strong shade predictor)",
+      "computed_value": "F=647.3",
+      "formula": "f_oneway",
+      "source": "Claim verified"
+    },
+    {
+      "claim": "Saltâ†”Soda Ash LIGHT r > 0.7",
+      "computed_value": "r=0.7915",
+      "formula": "pearsonr(Salt_L, Soda_L)",
+      "source": "Claim: râ‰ˆ0.792"
+    },
+    {
+      "claim": "Hâ‚‚Oâ‚‚-Salt DARK is significant (NOT independent)",
+      "computed_value": "r=-0.3372, p=3.82e-05",
+      "formula": "pearsonr(Salt_D, H2O2_D)",
+      "source": "Claim: conditional model needed"
+    },
+    {
+      "claim": "Soda/Salt ratio LIGHT",
+      "computed_value": "0.408",
+      "formula": "mean(Soda_Ash / Salt)",
+      "source": "Section 6"
+    },
+    {
+      "claim": "Soda/Salt ratio MEDIUM",
+      "computed_value": "0.292",
+      "formula": "mean(Soda_Ash / Salt)",
+      "source": "Section 6"
+    },
+    {
+      "claim": "Soda/Salt ratio DARK",
+      "computed_value": "0.191",
+      "formula": "mean(Soda_Ash / Salt)",
+      "source": "Section 6"
+    },
+    {
+      "claim": "PC1 variance > 40%",
+      "computed_value": "44.7%",
+      "formula": "PCA.explained_variance_ratio_[0]",
+      "source": "Section 7"
+    },
+    {
+      "claim": "PC2 variance > 15%",
+      "computed_value": "24.3%",
+      "formula": "PCA.explained_variance_ratio_[1]",
+      "source": "Section 7"
+    },
+    {
+      "claim": "PC1+PC2 cumulative > 65%",
+      "computed_value": "68.9%",
+      "formula": "sum(PC1,PC2)",
+      "source": "Section 7"
+    },
+    {
+      "claim": "K-Means accuracy > 65%",
+      "computed_value": "78.24%",
+      "formula": "correct/total with centroid mapping",
+      "source": "Model 3"
+    },
+    {
+      "claim": "DYE mean concentration LIGHT",
+      "computed_value": "0.0672%",
+      "formula": "mean(Dye_Qty) by shade",
+      "source": "Section 9"
+    },
+    {
+      "claim": "DYE mean concentration MEDIUM",
+      "computed_value": "0.3970%",
+      "formula": "mean(Dye_Qty) by shade",
+      "source": "Section 9"
+    },
+    {
+      "claim": "DYE mean concentration DARK",
+      "computed_value": "1.4495%",
+      "formula": "mean(Dye_Qty) by shade",
+      "source": "Section 9"
+    },
+    {
+      "claim": "DYE DARK/LIGHT ratio > 10Ã—",
+      "computed_value": "21.58Ã—",
+      "formula": "mean(Dark_Dye)/mean(Light_Dye)",
+      "source": "20Ã— claim verified"
+    },
+    {
+      "claim": "Feature completeness %",
+      "computed_value": "52.9%",
+      "formula": "len(pivot[KEY].dropna()) / len(pivot)",
+      "source": "Section 10"
+    }
+  ],
+  "claims_failed": [],
+  "warnings": [
+    "Soda Ash LIGHT clean mean 5.191 outside expected range 3.5-4.2"
+  ]
+}
